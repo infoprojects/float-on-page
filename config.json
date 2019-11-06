@@ -1,0 +1,14 @@
+{
+  "paths": {
+    "source": {
+      "scss": "./src/scss/*.scss",
+      "pug": "./src/pug/*.pug",
+      "coffee": "./src/coffee/*.coffee"
+    },
+    "dest": {
+      "baseDir": "./public",
+      "css": "css",
+      "js": "js"
+    }
+  }
+}
