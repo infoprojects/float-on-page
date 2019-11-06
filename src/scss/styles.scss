@@ -2,7 +2,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-header, main, footer {
+header, main, section, footer {
   float: left;
   width: 100%;
 }
@@ -11,11 +11,36 @@ header {
   background-color: #369;
 }
 
-.content, .aside {
+.content, .aside, .between {
   float: left;
-  width: 50%;
+}
+
+.content {
+  width: 70%;
+}
+
+.aside,
+.between {
+  width: 30%;
+}
+
+.between + .content{
+  width: 40%;
 }
 
 footer {
   background-color: #c96;
+  height: 500px;
+}
+
+.fop-ready {
+  background-color: lightskyblue;
+}
+
+.fop-afloat {
+  background-color: rebeccapurple;
+}
+
+.fop-pinned {
+  background-color: mediumturquoise;
 }
