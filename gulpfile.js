@@ -43,9 +43,18 @@ function js() {
     .pipe(dest(path.join(paths.dest.baseDir, paths.dest.js)));
 }
 
+function libs(done) {
+  src(paths.libs.jquery)
+    .pipe(dest(path.join(paths.dest.baseDir, paths.dest.jslibs)));
+  src(paths.libs.normalize)
+    .pipe(dest(path.join(paths.dest.baseDir, paths.dest.csslibs)));
+  done();
+}
+
 exports.html = html;
 exports.css = css;
 exports.js = js;
 exports.serve = serve;
+exports.libs = libs;
 
-exports.defaults = series(html, css, js, serve);
+exports.default = series(libs, html, css, js, serve);

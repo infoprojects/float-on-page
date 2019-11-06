@@ -1,5 +1,9 @@
 {
   "paths": {
+    "libs": {
+      "jquery": "./node_modules/jquery/dist/jquery.min.js",
+      "normalize": "./node_modules/normalize.css/normalize.css"
+    },
     "source": {
       "scss": "./src/scss/*.scss",
       "pug": "./src/pug/*.pug",
@@ -8,7 +12,9 @@
     "dest": {
       "baseDir": "./public",
       "css": "css",
-      "js": "js"
+      "csslibs": "css/libs",
+      "js": "js",
+      "jslibs": "js/libs"
     }
   }
 }

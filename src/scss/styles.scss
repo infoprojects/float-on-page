@@ -1,3 +1,21 @@
-h1 {
-  font-size: 3em;
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+header, main, footer {
+  float: left;
+  width: 100%;
+}
+
+header {
+  background-color: #369;
+}
+
+.content, .aside {
+  float: left;
+  width: 50%;
+}
+
+footer {
+  background-color: #c96;
 }
