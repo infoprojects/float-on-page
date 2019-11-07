@@ -21,11 +21,8 @@ $.fn.floatOnPage = (config) ->
     originLeft = floatElt.position().left
 
     floatElt
-      .append "#{stopAt}"
       .addFloatGhost()
       .addClass "fop-ready"
-      .addClass "fop-top-#{originTop}"
-      .addClass "fop-left-#{originLeft}"
 
     $(window).on "resize", () ->
       clearTimeout resizeTimer
