@@ -2,11 +2,10 @@
   "name": "@infoprojects/float-on-page",
   "version": "0.0.1",
   "description": "Keep element in viewport when scrolling the page, but within limits",
-  "main": "index.js",
+  "main": "dist/float-on-page.js",
   "repository": "git@github.com:infoprojects/float-on-page.git",
   "author": "Ad van Pinxteren <ad@infoprojects.nl>",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "gulp": "gulp -- "
   },
