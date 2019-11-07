@@ -21,7 +21,7 @@ html
         p#Taleggio Taleggio chalk and cheese roquefort. Caerphilly smelly cheese smelly cheese cheese and wine croque monsieur cut the cheese chalk and cheese cream cheese. Cheesy grin camembert de normandie taleggio jarlsberg mascarpone paneer who moved my cheese hard cheese. Taleggio cheese and biscuits fromage frais.
         p#Pecorino Pecorino edam the big cheese. Cow halloumi jarlsberg chalk and cheese halloumi halloumi babybel queso. Bocconcini emmental boursin hard cheese cheese strings rubber cheese roquefort parmesan. Cow brie dolcelatte hard cheese.
       .aside
-        div(data-float-config='{"stopAt": "#section-one"}')
+        div.fop-candidate(data-float-config='{"stopAt": "#section-one"}')
           h3 On this page
           ul
             li
@@ -38,7 +38,7 @@ html
       section#section-one
         h3 Section title
         .aside
-          div(data-float-config='{"stopAt": "footer"}')
+          div.fop-candidate(data-float-config='{"stopAt": "footer"}')
             h3 In this section
             ul
               li
@@ -52,9 +52,15 @@ html
               li
                 a(href='#Pecorino') Pecorino
         .between
-          div(data-float-config='{"stopAt": "footer"}')
+          div
+            h3 Less cheese
+            p Dolcelatte cheese strings port-salut.
+          div.fop-candidate(data-float-config='{"stopAt": "footer"}')
             h3 Some more explanation
             p Cheese triangles stilton cow.
+          div
+            h3 More cheese
+            p Dolcelatte cheese strings port-salut.
         .content
           p#Fromage Fromage cheese on toast hard cheese. Dolcelatte cheese strings port-salut fromage fromage frais pepper jack stinking bishop cow. Cheese and wine macaroni cheese monterey jack fondue cheesy feet cheesy feet cow mascarpone. Rubber cheese melted cheese danish fontina goat halloumi smelly cheese jarlsberg fromage frais. When the cheese comes out everybody's happy roquefort fromage frais dolcelatte.
           p Cheese triangles stilton cow. Bavarian bergkase taleggio roquefort fromage swiss cream cheese cheddar the big cheese. Feta the big cheese cheese and wine pecorino halloumi roquefort cottage cheese jarlsberg. Who moved my cheese swiss squirty cheese smelly cheese swiss edam stilton pepper jack. Cheese slices airedale lancashire airedale lancashire camembert de normandie monterey jack squirty cheese. Emmental ricotta paneer smelly cheese melted cheese the big cheese stinking bishop gouda. Manchego lancashire cheese and biscuits.
@@ -69,3 +75,4 @@ html
     footer Footer
     script(src='js/libs/jquery.min.js')
     script(src='js/float-on-page.js')
+    script(src='js/fop-init.js')

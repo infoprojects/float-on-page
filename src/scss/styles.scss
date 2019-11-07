@@ -11,7 +11,9 @@ header {
   background-color: #369;
 }
 
-.content, .aside, .between {
+.content,
+.aside,
+.between {
   float: left;
 }
 
@@ -31,6 +33,10 @@ header {
 footer {
   background-color: #c96;
   height: 500px;
+}
+
+[data-float-config] {
+  padding: 1em 0;
 }
 
 .fop-ready {
