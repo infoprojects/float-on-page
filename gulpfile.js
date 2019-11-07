@@ -1,11 +1,13 @@
 const { src, dest, series, parallel, watch } = require('gulp');
-const sass = require('gulp-sass');
-const pug = require('gulp-pug');
-const coffee = require('gulp-coffee');
-const config = require('./config.json');
 const browserSync = require('browser-sync').create();
-const paths = config.paths;
+const coffee = require('gulp-coffee');
+const flatten = require('gulp-flatten');
+const pug = require('gulp-pug');
+const sass = require('gulp-sass');
+const del = require('del');
+const config = require('./config.json');
 const path = require('path');
+const paths = config.paths;
 
 function serveFiles(done) {
   browserSync.init({
@@ -54,6 +56,16 @@ function copyLibs(done) {
   done();
 }
 
+function cleanDist() {
+  return del(path.join(paths.dist.baseDir,'**/*'));
+}
+
+function dist(done) {
+  src(path.join(paths.dest.baseDir, paths.dest.js, "float-on-page.js"))
+    .pipe(flatten())
+    .pipe(dest(paths.dist.baseDir));
+  done();
+}
 
 function watchFiles(done) {
   watch(paths.source.coffee, buildJs);
@@ -62,4 +74,5 @@ function watchFiles(done) {
   done();
 }
 
+exports.build = series(cleanDist,buildJs, dist);
 exports.default = series(copyLibs, buildHtml, buildCss, buildJs, serveFiles, watchFiles);

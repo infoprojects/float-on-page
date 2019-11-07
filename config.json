@@ -15,6 +15,9 @@
       "csslibs": "css/libs",
       "js": "js",
       "jslibs": "js/libs"
+    },
+    "dist": {
+      "baseDir": "./dist"
     }
   }
 }
