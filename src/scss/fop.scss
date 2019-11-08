@@ -1,0 +1,23 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.spacious {
+  height: 600px;
+}
+
+[data-float-config] {
+  padding: 1em 0;
+}
+
+.fop-active {
+  background-color: #FFFBBD;
+}
+
+.fop-afloat {
+  background-color: #0CAADC;
+}
+
+.fop-pinned {
+  background-color: #D1345B;
+}

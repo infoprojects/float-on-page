@@ -1,0 +1,22 @@
+$baseline-config: (
+  zones: (
+    (columns: 12, blocks: (12, 9, 6, 3)),
+    (columns: 9, blocks: (9, 6, 3)),
+    (columns: 6, blocks: (6, 3)),
+    (columns: 3, blocks: (3))
+  ),
+  column-width: 100px,
+  gutter: 0,
+  outer-padding: 10px,
+  inner-padding: 10px
+);
+
+@import "mixins/baseline-loader";
+
+header .grid-zone {
+  background-color: #1481BA;
+}
+
+footer .grid-zone {
+  background-color: #1481BA;
+}

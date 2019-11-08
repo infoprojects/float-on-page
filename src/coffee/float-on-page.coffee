@@ -10,41 +10,27 @@ $.fn.addFloatGhost = ->
     .css
       "width": original.get(0).offsetWidth
       "height": original.get(0).offsetHeight
-  return original
+  original.addClass "fop-active"
+
+$.fn.removeFloatGhost = ->
+  original = $ @
+  original.next(".fop-ghost").remove()
+  original.removeClass "fop-active"
 
 $.fn.floatOnPage = (config) ->
   $(@).each ->
     eltConfig = $(@).data("float-config") or config
     stopAt = eltConfig.stopAt;
+    minSize = eltConfig.minSize or 0;
     floatElt = $ @
-    originTop = floatElt.position().top
-    originLeft = floatElt.position().left
+    originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
+    originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
 
-    floatElt
-      .addFloatGhost()
-      .addClass "fop-ready"
-
-    $(window).on "resize", () ->
-      clearTimeout resizeTimer
-      resizeTimer = setTimeout(( ->
-        floatElt
-          .removeClass "fop-afloat fop-pinned"
-          .css
-            "left": 0
-            "top": 0
-            "position": "static"
-        originTop = floatElt.position().top
-        originLeft = floatElt.position().left
-        $(window).trigger "scroll"
-        return
-      ), 250)
-      return
-
-    $(window).on "scroll", ->
-      collisionPoint = $(stopAt).position().top
+    applyPageFloat = ->
+      collisionPoint = $(stopAt).get(0).getBoundingClientRect().top + window.scrollY
       eltHeight = floatElt.get(0).offsetHeight
       eltWidth = floatElt.get(0).offsetWidth
-      docTop = $(document).scrollTop()
+      docTop = window.scrollY
 
       shouldFloat = docTop >= originTop
       eltTop = if shouldFloat then docTop + originTop else originTop
@@ -63,22 +49,62 @@ $.fn.floatOnPage = (config) ->
             "width": eltWidth
           .next(".fop-ghost").show()
       else if shouldFloat
+        leftFromParent = originLeft - floatElt.offsetParent().get(0).getBoundingClientRect().left + window.scrollX
         floatElt
           .addClass "fop-pinned"
           .css
-            "left": originLeft
-            "top": collisionPoint - eltHeight
+            "left": leftFromParent
             "position": "absolute"
+            "top": collisionPoint - eltHeight - floatElt.offsetParent().get(0).getBoundingClientRect().top - window.scrollY
             "width": eltWidth
           .next(".fop-ghost").show()
       else if !shouldFloat and floating
-        floatElt
-          .removeClass "fop-afloat fop-pinned"
-          .css
-            "left": 0
-            "top": 0
-            "position": "static"
-          .next(".fop-ghost").hide()
+        resetPageFloat()
       return
+
+    startPageFloat = ->
+      floatElt.addFloatGhost()
+      originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
+      originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
+      $(window).on "scroll", applyPageFloat
+      $(window).trigger "scroll"
+      return
+
+    stopPageFloat = ->
+      $(window).off "scroll", applyPageFloat
+      floatElt.removeFloatGhost()
+      return
+
+    resetPageFloat = ->
+      floatElt
+        .removeClass "fop-afloat fop-pinned"
+        .css
+          "left": "auto"
+          "position": "static"
+          "top": "auto"
+          "width": "auto"
+        .next(".fop-ghost").hide()
+      originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
+      originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
+      return
+
+    $(window).on "resize", () ->
+      clearTimeout debounceResize
+      debounceResize = setTimeout(( ->
+        wouldFloat = $(window).width() >= minSize
+        if wouldFloat and !floatElt.hasClass("fop-active")
+          startPageFloat()
+        else if !wouldFloat and floatElt.hasClass("fop-active")
+          stopPageFloat()
+        else
+          resetPageFloat()
+      ), 320)
+      return
+
+    $(window).trigger "resize"
     return
   return @
+
+
+
+

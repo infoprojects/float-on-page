@@ -1,9 +1,10 @@
 html
   head
-    title Pagina
+    title A page with no grid system
     link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap', rel='stylesheet')
     link(href='css/libs/normalize.css', rel='stylesheet')
-    link(href='css/styles.css', rel='stylesheet')
+    link(href='css/no-grid.css', rel='stylesheet')
+    link(href='css/fop.css', rel='stylesheet')
   body
     header
       h1 Site title
@@ -21,7 +22,7 @@ html
         p#Taleggio Taleggio chalk and cheese roquefort. Caerphilly smelly cheese smelly cheese cheese and wine croque monsieur cut the cheese chalk and cheese cream cheese. Cheesy grin camembert de normandie taleggio jarlsberg mascarpone paneer who moved my cheese hard cheese. Taleggio cheese and biscuits fromage frais.
         p#Pecorino Pecorino edam the big cheese. Cow halloumi jarlsberg chalk and cheese halloumi halloumi babybel queso. Bocconcini emmental boursin hard cheese cheese strings rubber cheese roquefort parmesan. Cow brie dolcelatte hard cheese.
       .aside
-        div.fop-candidate(data-float-config='{"stopAt": "#section-one"}')
+        div.fop-candidate(data-float-config='{"stopAt": "#section-one", "minSize": 960}')
           h3 On this page
           ul
             li
@@ -72,7 +73,8 @@ html
           p#Babybel Babybel st. agur blue cheese mascarpone. Halloumi who moved my cheese port-salut emmental cheeseburger melted cheese pecorino melted cheese. Cauliflower cheese cow halloumi everyone loves danish fontina gouda croque monsieur smelly cheese. St. agur blue cheese monterey jack taleggio manchego croque monsieur cheese slices squirty cheese the big cheese. Blue castello queso cheese slices brie.
           p#Taleggio Taleggio chalk and cheese roquefort. Caerphilly smelly cheese smelly cheese cheese and wine croque monsieur cut the cheese chalk and cheese cream cheese. Cheesy grin camembert de normandie taleggio jarlsberg mascarpone paneer who moved my cheese hard cheese. Taleggio cheese and biscuits fromage frais.
           p#Pecorino Pecorino edam the big cheese. Cow halloumi jarlsberg chalk and cheese halloumi halloumi babybel queso. Bocconcini emmental boursin hard cheese cheese strings rubber cheese roquefort parmesan. Cow brie dolcelatte hard cheese.
-    footer Footer
+    footer
+      p.spacious Footer of page
     script(src='js/libs/jquery.min.js')
     script(src='js/float-on-page.js')
     script(src='js/fop-init.js')

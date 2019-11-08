@@ -1,0 +1,69 @@
+html
+  head
+    title A page with a grid system
+    link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap', rel='stylesheet')
+    link(href='css/libs/normalize.css', rel='stylesheet')
+    link(href='css/grid.css', rel='stylesheet')
+    link(href='css/fop.css', rel='stylesheet')
+  body
+    header
+      .grid-wrapper.wrapper_12
+        .grid-container.container_12
+          .grid-zone.grid_12
+            .grid-blok.grid_12
+              .grid-element
+                .grid-edge
+                  .grid-title
+                    h1 Page title
+    main
+      .grid-wrapper.wrapper_12
+        .grid-container.container_12
+          .grid-zone.grid_9
+            .grid-blok.grid_9
+              .grid-element
+                .grid-edge
+                  .grid-title
+                    h2 Content block
+                  .grid-inside
+                    p#Fromage Fromage cheese on toast hard cheese. Dolcelatte cheese strings port-salut fromage fromage frais pepper jack stinking bishop cow. Cheese and wine macaroni cheese monterey jack fondue cheesy feet cheesy feet cow mascarpone. Rubber cheese melted cheese danish fontina goat halloumi smelly cheese jarlsberg fromage frais. When the cheese comes out everybody's happy roquefort fromage frais dolcelatte.
+                    p Cheese triangles stilton cow. Bavarian bergkase taleggio roquefort fromage swiss cream cheese cheddar the big cheese. Feta the big cheese cheese and wine pecorino halloumi roquefort cottage cheese jarlsberg. Who moved my cheese swiss squirty cheese smelly cheese swiss edam stilton pepper jack. Cheese slices airedale lancashire airedale lancashire camembert de normandie monterey jack squirty cheese. Emmental ricotta paneer smelly cheese melted cheese the big cheese stinking bishop gouda. Manchego lancashire cheese and biscuits.
+                    p Chalk and cheese cheese and wine bavarian bergkase. Lancashire squirty cheese gouda fromage frais camembert de normandie chalk and cheese mozzarella port-salut. Parmesan lancashire halloumi boursin mascarpone cheese on toast boursin pepper jack. Cow stilton taleggio macaroni cheese dolcelatte brie chalk and cheese emmental. Cheeseburger cut the cheese cheese slices cheeseburger hard cheese brie rubber cheese fromage. Babybel airedale halloumi cheesy grin manchego cheese slices monterey jack pepper jack. Stilton bavarian bergkase queso bavarian bergkase caerphilly jarlsberg dolcelatte cheddar. Everyone loves cheese strings smelly cheese cottage cheese jarlsberg.
+                    p Cow rubber cheese cream cheese. Cream cheese smelly cheese caerphilly cauliflower cheese cheesecake monterey jack cheddar smelly cheese. Hard cheese chalk and cheese dolcelatte mozzarella stilton cheese triangles taleggio cheddar. Cheese strings edam smelly cheese mozzarella st. agur blue cheese jarlsberg ricotta paneer. Who moved my cheese edam cheese and biscuits manchego cheese strings rubber cheese cauliflower cheese ricotta. Squirty cheese pepper jack rubber cheese pepper jack fromage cow melted cheese stinking bishop. Goat cottage cheese.
+                    p Cream cheese croque monsieur macaroni cheese. Parmesan hard cheese st. agur blue cheese pepper jack airedale everyone loves gouda manchego. When the cheese comes out everybody's happy babybel cheese on toast bavarian bergkase pepper jack rubber cheese boursin macaroni cheese. Boursin cheesy feet cream cheese the big cheese cheesy feet cow the big cheese red leicester. Cheese and wine smelly cheese blue castello queso danish fontina cow mascarpone squirty cheese. Cottage cheese cut the cheese emmental who moved my cheese cheese slices swiss.
+                    p Stinking bishop roquefort swiss. Babybel swiss camembert de normandie cheese and biscuits rubber cheese danish fontina bocconcini the big cheese. St. agur blue cheese rubber cheese fromage chalk and cheese queso cheesy grin cheese and biscuits blue castello. Jarlsberg cheese and wine say cheese edam pepper jack stilton boursin emmental. Red leicester rubber cheese taleggio port-salut cottage cheese emmental parmesan airedale. Chalk and cheese feta squirty cheese jarlsberg.
+                    p#Airedale Airedale edam bocconcini. Blue castello dolcelatte when the cheese comes out everybody's happy cow lancashire chalk and cheese cheesy feet ricotta. Mascarpone fromage pepper jack rubber cheese fromage frais cauliflower cheese fromage frais cauliflower cheese. Manchego cauliflower cheese feta manchego parmesan everyone loves cow cheeseburger. Taleggio caerphilly cheese triangles.
+                    p#Babybel Babybel st. agur blue cheese mascarpone. Halloumi who moved my cheese port-salut emmental cheeseburger melted cheese pecorino melted cheese. Cauliflower cheese cow halloumi everyone loves danish fontina gouda croque monsieur smelly cheese. St. agur blue cheese monterey jack taleggio manchego croque monsieur cheese slices squirty cheese the big cheese. Blue castello queso cheese slices brie.
+                    p#Taleggio Taleggio chalk and cheese roquefort. Caerphilly smelly cheese smelly cheese cheese and wine croque monsieur cut the cheese chalk and cheese cream cheese. Cheesy grin camembert de normandie taleggio jarlsberg mascarpone paneer who moved my cheese hard cheese. Taleggio cheese and biscuits fromage frais.
+                    p#Pecorino Pecorino edam the big cheese. Cow halloumi jarlsberg chalk and cheese halloumi halloumi babybel queso. Bocconcini emmental boursin hard cheese cheese strings rubber cheese roquefort parmesan. Cow brie dolcelatte hard cheese.
+          .grid-zone.grid_3
+            .grid-blok.grid_3
+              .grid-element
+                .grid-edge
+                  .grid-title
+                    h2 Aside block
+                  .grid-inside
+                    .fop-candidate(data-float-config='{"stopAt": "footer .grid-zone", "minSize": 960}')
+                      ul
+                        li
+                          a(href='#Fromage') Fromage
+                        li
+                          a(href='#Airedale') Airedale
+                        li
+                          a(href='#Babybel') Babybel
+                        li
+                          a(href='#Taleggio') Taleggio
+                        li
+                          a(href='#Pecorino') Pecorino
+    footer
+      .grid-wrapper.wrapper_12
+        .grid-container.container_12
+          .grid-zone.grid_12
+            .grid-blok.grid_12
+              .grid-element
+                .grid-edge
+                  .grid-inside
+                    p.spacious Footer of page
+
+    script(src='js/libs/jquery.min.js')
+    script(src='js/float-on-page.js')
+    script(src='js/fop-init.js')

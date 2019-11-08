@@ -31,7 +31,9 @@ function buildHtml() {
 function buildCss() {
   return src(paths.source.scss)
     .pipe(
-      sass()
+      sass({
+        includePaths: ['node_modules/@infoprojects/baseline-grid/scss']
+      })
     )
     .pipe(dest(path.join(paths.dest.baseDir, paths.dest.css)))
     .pipe(browserSync.stream());
@@ -61,7 +63,7 @@ function cleanDist() {
 }
 
 function dist(done) {
-  src(path.join(paths.dest.baseDir, paths.dest.js, "float-on-page.js"))
+  src(path.join(paths.dest.baseDir, paths.dest.js, 'float-on-page.js'))
     .pipe(flatten())
     .pipe(dest(paths.dist.baseDir));
   done();
@@ -74,5 +76,6 @@ function watchFiles(done) {
   done();
 }
 
+exports.css = buildCss;
 exports.build = series(cleanDist,buildJs, dist);
 exports.default = series(copyLibs, buildHtml, buildCss, buildJs, serveFiles, watchFiles);

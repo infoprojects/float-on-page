@@ -1,0 +1,32 @@
+header, main, section, footer {
+  float: left;
+  width: 100%;
+}
+
+header {
+  background-color: #1481BA;
+}
+
+footer {
+  background-color: #1481BA;
+}
+
+.content,
+.aside,
+.between {
+  float: left;
+}
+
+.content {
+  width: 70%;
+}
+
+.aside,
+.between {
+  width: 30%;
+}
+
+.between + .content{
+  width: 40%;
+}
+
