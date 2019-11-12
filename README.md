@@ -7,9 +7,9 @@ When you apply this feature to a such a component:
 - but, when it will probably hit a following section on the page (for example, the footer), it will be nailed to the page again to be scrolled out of view.
 
 ## Getting started
-`yarn` : fetches dependencies, etc.
-`gulp` : run default build and starts local server, watching resources to hot reload results
-`gulp build` : cleans distribution folder and builds package
+- `yarn` : fetches dependencies, etc.
+- `gulp` : run default build and starts local server, watching resources to hot reload results
+- `gulp build` : cleans distribution folder and builds package
 
 ## Usage
 1. Include jQuery
@@ -20,16 +20,15 @@ When you apply this feature to a such a component:
 ```
 
 ### Config options
-`stopAt` (required, jQuery selection path) -> element that would cause a collision, and will nail the floating element back on the page;
-`minWidth` (optional, int pixels) -> minimal viewport width for the behaviour to act, for example:
+- `stopAt` (required, jQuery selection path) -> element that would cause a collision, and will nail the floating element back on the page;
+- `minWidth` (optional, int pixels) -> minimal viewport width for the behaviour to act, for example:
 ```
 $(".sidebar-element:has(.paging-feature)").floatOnPage({"stopAt": "footer", "minSize": 920});
-
 ```
 
-### Note
-Floating element should have dimensions (width/height);
-`stopAt` element should be positioned (and thus have a measurable `getBoundingClientRect().top`)
+### Notes
+- Floating element should have dimensions (width/height);
+- `stopAt` element should be positioned (and thus have a measurable `getBoundingClientRect().top`)
 
 ## Credits
 Thanks to http://www.cheeseipsum.co.uk/ for generating dummy text
