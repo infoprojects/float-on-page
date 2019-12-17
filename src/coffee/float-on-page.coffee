@@ -25,11 +25,11 @@ $.fn.floatOnPage = (config) ->
     floatElt = $ @
     originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
     originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
+    eltHeight = floatElt.height()
+    eltWidth = floatElt.width()
 
     applyPageFloat = ->
       collisionPoint = $(stopAt).get(0).getBoundingClientRect().top + window.scrollY
-      eltHeight = floatElt.get(0).offsetHeight
-      eltWidth = floatElt.get(0).offsetWidth
       docTop = window.scrollY
 
       shouldFloat = docTop >= originTop
@@ -104,7 +104,3 @@ $.fn.floatOnPage = (config) ->
     $(window).trigger "resize"
     return
   return @
-
-
-
-
