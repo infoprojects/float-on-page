@@ -25,8 +25,8 @@ $.fn.floatOnPage = (config) ->
     floatElt = $ @
     originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
     originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
-    eltHeight = floatElt.height()
-    eltWidth = floatElt.width()
+    eltHeight = floatElt.outerHeight()
+    eltWidth = floatElt.outerWidth()
 
     applyPageFloat = ->
       collisionPoint = $(stopAt).get(0).getBoundingClientRect().top + window.scrollY
