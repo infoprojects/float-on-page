@@ -25,6 +25,7 @@ $.fn.floatOnPage = (config) ->
     floatElt = $ @
     originTop = floatElt.get(0).getBoundingClientRect().top + window.pageYOffset
     originLeft = floatElt.get(0).getBoundingClientRect().left + window.pageXOffset
+
     eltHeight = floatElt.outerHeight()
     eltWidth = floatElt.outerWidth()
 
