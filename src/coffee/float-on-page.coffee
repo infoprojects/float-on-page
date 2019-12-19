@@ -23,14 +23,14 @@ $.fn.floatOnPage = (config) ->
     stopAt = eltConfig.stopAt;
     minSize = eltConfig.minSize or 0;
     floatElt = $ @
-    originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
-    originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
+    originTop = floatElt.get(0).getBoundingClientRect().top + window.pageYOffset
+    originLeft = floatElt.get(0).getBoundingClientRect().left + window.pageXOffset
     eltHeight = floatElt.outerHeight()
     eltWidth = floatElt.outerWidth()
 
     applyPageFloat = ->
-      collisionPoint = $(stopAt).get(0).getBoundingClientRect().top + window.scrollY
-      docTop = window.scrollY
+      collisionPoint = $(stopAt).get(0).getBoundingClientRect().top + window.pageYOffset
+      docTop = window.pageYOffset
 
       shouldFloat = docTop >= originTop
       eltTop = if shouldFloat then docTop + originTop else originTop
@@ -49,13 +49,13 @@ $.fn.floatOnPage = (config) ->
             "width": eltWidth
           .next(".fop-ghost").show()
       else if shouldFloat
-        leftFromParent = originLeft - floatElt.offsetParent().get(0).getBoundingClientRect().left + window.scrollX
+        leftFromParent = originLeft - floatElt.offsetParent().get(0).getBoundingClientRect().left + window.pageXOffset
         floatElt
           .addClass "fop-pinned"
           .css
             "left": leftFromParent
             "position": "absolute"
-            "top": collisionPoint - eltHeight - floatElt.offsetParent().get(0).getBoundingClientRect().top - window.scrollY
+            "top": collisionPoint - eltHeight - floatElt.offsetParent().get(0).getBoundingClientRect().top - window.pageYOffset
             "width": eltWidth
           .next(".fop-ghost").show()
       else if !shouldFloat and floating
@@ -64,8 +64,8 @@ $.fn.floatOnPage = (config) ->
 
     startPageFloat = ->
       floatElt.addFloatGhost()
-      originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
-      originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
+      originTop = floatElt.get(0).getBoundingClientRect().top + window.pageYOffset
+      originLeft = floatElt.get(0).getBoundingClientRect().left + window.pageXOffset
       $(window).on "scroll", applyPageFloat
       $(window).trigger "scroll"
       return
@@ -84,8 +84,8 @@ $.fn.floatOnPage = (config) ->
           "top": "auto"
           "width": "auto"
         .next(".fop-ghost").hide()
-      originTop = floatElt.get(0).getBoundingClientRect().top + window.scrollY
-      originLeft = floatElt.get(0).getBoundingClientRect().left + window.scrollX
+      originTop = floatElt.get(0).getBoundingClientRect().top + window.pageYOffset
+      originLeft = floatElt.get(0).getBoundingClientRect().left + window.pageXOffset
       return
 
     $(window).on "resize", () ->
