@@ -21,8 +21,7 @@
     "normalize.css": "^8.0.1"
   },
   "dependencies": {
-    "jquery": "^3.5.1",
-    "node-sass": "4.12.0"
+    "jquery": "^3.5.1"
   },
   "resolutions": {
     "gulp-sass/**/node-sass": "4.12.0",
