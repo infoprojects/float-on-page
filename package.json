@@ -10,7 +10,7 @@
     "gulp": "gulp -- "
   },
   "devDependencies": {
-    "@infoprojects/baseline-grid": "1.1.2",
+    "@infoprojects/baseline-grid": "^1.1.4",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
@@ -24,7 +24,8 @@
     "jquery": "^3.5.1"
   },
   "resolutions": {
-    "gulp-sass/**/node-sass": "4.12.0",
-    "**/kind-of": "6.0.3"
+    "gulp-sass/**/node-sass": "^4.12.0",
+    "**/kind-of": "^6.0.3",
+    "**/yargs-parser": "^18.1.3"
   }
 }
