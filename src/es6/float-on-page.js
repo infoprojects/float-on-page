@@ -28,20 +28,21 @@
       const eltConfig = $(currentElement).data("float-config") || config;
       const stopAt = eltConfig.stopAt;
       const minSize = eltConfig.minSize || 0;
+      const fromTop = eltConfig.fromTop || 0;
 
       const floatElt = $(currentElement);
       let originTop = floatElt.get(0).getBoundingClientRect().top + window.pageYOffset;
       let originLeft = floatElt.get(0).getBoundingClientRect().left + window.pageXOffset;
-      const eltHeight = floatElt.outerHeight();
-      const eltWidth = floatElt.outerWidth();
+      let eltHeight = floatElt.outerHeight();
+      let eltWidth = floatElt.outerWidth();
 
       const applyPageFloat = function () {
         const collisionPoint = $(stopAt).get(0).getBoundingClientRect().top + window.pageYOffset;
         const docTop = window.pageYOffset;
 
-        const shouldFloat = docTop >= originTop;
+        const shouldFloat = docTop >= originTop - fromTop;
         const eltTop = shouldFloat ? docTop + originTop : originTop;
-        const willCollide = docTop + eltHeight >= collisionPoint;
+        const willCollide = docTop + eltHeight >= collisionPoint - fromTop;
         const floating = floatElt.hasClass("fop-afloat");
         const pinnedToPage = floatElt.hasClass("fop-pinned");
 
@@ -51,13 +52,14 @@
             .addClass("fop-afloat")
             .css({
               "left": originLeft,
-              "top": 0,
+              "top": fromTop,
               "position": "fixed",
               "width": eltWidth
             })
             .next(".fop-ghost")
             .show();
         } else if (shouldFloat) {
+          resetPageFloat();
           const leftFromParent = originLeft - floatElt.offsetParent().get(0).getBoundingClientRect().left + window.pageXOffset;
 
           floatElt
@@ -101,8 +103,18 @@
         originLeft = floatElt.get(0).getBoundingClientRect().left + window.pageXOffset;
       };
 
+      const recalculate = () => {
+        eltHeight = floatElt.outerHeight();
+        eltWidth = floatElt.outerWidth();
+
+        resetPageFloat()
+        applyPageFloat();
+      }
+
+      new ResizeObserver(recalculate).observe(floatElt.get(0));
+
       $(window).on("resize", function () {
-        var debounceResize;
+        let debounceResize;
 
         clearTimeout(debounceResize);
 
@@ -113,8 +125,11 @@
             return startPageFloat();
           } else if (!wouldFloat && floatElt.hasClass("fop-active")) {
             return stopPageFloat();
-          } else {
+          } else if (!wouldFloat && !floatElt.hasClass("fop-active")) {
             return resetPageFloat();
+          } else {
+            resetPageFloat();
+            return recalculate();
           }
         }, 320);
       });
