@@ -1,9 +1,9 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
-const coffee = require('gulp-coffee');
+const babel = require('gulp-babel');
 const flatten = require('gulp-flatten');
 const pug = require('gulp-pug');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('node-sass'));
 const del = require('del');
 const config = require('./config.json');
 const path = require('path');
@@ -40,15 +40,13 @@ function buildCss() {
 }
 
 function buildJs() {
-  return src(paths.source.coffee)
+  return src(paths.source.babel)
     .pipe(
-      coffee({
-        bare: true
-      })
+      babel()
     )
     .pipe(dest(path.join(paths.dest.baseDir, paths.dest.js)))
     .pipe(browserSync.stream());
-  }
+}
 
 function copyLibs(done) {
   src(paths.libs.jquery)
@@ -59,7 +57,7 @@ function copyLibs(done) {
 }
 
 function cleanDist() {
-  return del(path.join(paths.dist.baseDir,'**/*'));
+  return del(path.join(paths.dist.baseDir, '**/*'));
 }
 
 function dist(done) {
@@ -70,12 +68,12 @@ function dist(done) {
 }
 
 function watchFiles(done) {
-  watch(paths.source.coffee, buildJs);
+  watch(paths.source.babel, buildJs);
   watch(paths.source.scss, buildCss);
   watch(paths.source.pug, buildHtml);
   done();
 }
 
 exports.css = buildCss;
-exports.build = series(cleanDist,buildJs, dist);
+exports.build = series(cleanDist, buildJs, dist);
 exports.default = series(copyLibs, buildHtml, buildCss, buildJs, serveFiles, watchFiles);

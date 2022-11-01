@@ -7,7 +7,7 @@
     "source": {
       "scss": "./src/scss/*.scss",
       "pug": "./src/pug/*.pug",
-      "coffee": "./src/coffee/*.coffee"
+      "babel": "./src/es6/*.js"
     },
     "dest": {
       "baseDir": "./public",
